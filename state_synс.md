@@ -3,7 +3,7 @@
 peers="1a1785bf66f47a2eff058fe770be6b6b1b694400@38.242.148.96:27656"; \
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.planqd/config/config.toml
 
-SNAP_RPC="[https://planq-rpc.gnst.systemd.run](http://38.242.148.96:26657)"; \
+SNAP_RPC="http://38.242.148.96:26657"; \
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 500)); \
 TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash); \
